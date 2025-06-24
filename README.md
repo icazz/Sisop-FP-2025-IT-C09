@@ -117,3 +117,6 @@ https://github.com/user-attachments/assets/0bc73f31-aa55-481e-9d87-510fa73b0cf5
 ## Daftar Pustaka
 Rajgarhia, A., & Gehani, A. (2010). Performance and extension of user space file systems. In Proceedings of the 2010 ACM Symposium on Applied Computing (pp. 
 206–213). ACM.
+
+Srinivasan, A., Kolli, S., & Wu, J. (2013). Steganographic information hiding that exploits a novel file system vulnerability. International Journal of Security 
+and Networks, 8(2), 82–93.
