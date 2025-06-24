@@ -124,3 +124,5 @@ and Networks, 8(2), 82–93.
 Jokay, M., & Kosdy, M. (2013). Steganographic file system based on JPEG files. Tatra Mountains Mathematical Publications, 57, 65–83.
 
 Baliga, A., Kilian, J., & Iftode, L. (2007). A Web-based covert file system (Technical Report). Rutgers University, Department of Computer Science.
+
+Zadok, E., & Nieh, J. (2000). FiST: A language for stackable file systems. In USENIX Annual Technical Conference (pp. 55–70).
