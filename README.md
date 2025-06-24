@@ -95,7 +95,10 @@ yang juga mengimplementasikan sistem file tersembunyi melalui lapisan logika di 
 
 **Solusi**    
 Solusi praktikum ini mengimplementasikan sebuah program bernama cleanfs.c, yang memanfaatkan FUSE untuk membuat filesystem sederhana yang berfungsi menyembunyikan
-semua file atau folder yang diawali dengan titik (.) dari tampilan direktori mount.
+semua file atau folder yang diawali dengan titik (.) dari tampilan direktori mount. Program ini disusun menggunakan bahasa C, sesuai dengan rekomendasi dari Rajgarhia dan Gehani bahwa FUSE menyediakan binding 
+kuat untuk C, serta memungkinkan kontrol penuh atas operasi dasar seperti readdir, getattr, read, dan open.
+
+
 
 > Insert poin soal...
 
