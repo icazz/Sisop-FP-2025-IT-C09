@@ -93,9 +93,9 @@ Namun berbeda dengan pendekatan kompleks tersebut, tugas ini mengambil jalan yan
 Menyaring entri direktori agar tidak menampilkan file tersembunyi secara visual, dengan tetap menyimpan struktur dan isinya di belakang layar. Pendekatan ini serupa dengan desain awal CovertFS (Baliga et al.), 
 yang juga mengimplementasikan sistem file tersembunyi melalui lapisan logika di atas FUSE.
 
-**Solusi**
-
-...
+**Solusi**    
+Solusi praktikum ini mengimplementasikan sebuah program bernama cleanfs.c, yang memanfaatkan FUSE untuk membuat filesystem sederhana yang berfungsi menyembunyikan
+semua file atau folder yang diawali dengan titik (.) dari tampilan direktori mount.
 
 > Insert poin soal...
 
