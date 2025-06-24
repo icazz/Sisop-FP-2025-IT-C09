@@ -120,3 +120,5 @@ Rajgarhia, A., & Gehani, A. (2010). Performance and extension of user space file
 
 Srinivasan, A., Kolli, S., & Wu, J. (2013). Steganographic information hiding that exploits a novel file system vulnerability. International Journal of Security 
 and Networks, 8(2), 82–93.
+
+Jokay, M., & Kosdy, M. (2013). Steganographic file system based on JPEG files. Tatra Mountains Mathematical Publications, 57, 65–83.
