@@ -9,11 +9,11 @@
 
 ## Deskripsi Soal (Testcase 29)
 
-[NO TITIK-TITIK]    
+**[NO TITIK-TITIK]**    
 Buat sebuah FUSE file system yang berfungsi sebagai pembersih tampilan. Saat sebuah direktori di-mount, file system akan menyembunyikan semua file dan folder yang namanya diawali dengan titik (.).
 
-### Catatan    
-Penggunaan:
+### Catatan       
+**Penggunaan:**    
 1. Compile 
 ```
 gcc -Wall cleanfs.c `pkg-config fuse3 --cflags --libs` -o cleanfs
@@ -38,8 +38,7 @@ mkdir folder
 mkdir .hidden_folder
 ```
 
-Struktur repository:
-
+**Struktur repository:**    
 1. Sebelum FUSE dijalankan
 ```
 ├── cleanfs.c
@@ -93,20 +92,9 @@ Solusi praktikum ini mengimplementasikan sebuah program bernama `cleanfs.c`, yan
 Secara arsitektur, program berkerja dengan mengambil isi dari direktori `repo` sebagai sumber datanya. Direktori `mount_dir` adalh titik mounting tempat pengguna melihat tampilan file. fungsi `x_readdir` adalah komponen utama yang menyaring file yang dimulai dengan titik, sehingga tidak ditampilkan meskipun secara fisik tetap ada di disk. Fitur ini selaras dengan prinsip "user-level file filtering" yang disarankan oleh FiSt (Zadok dan Nieh), di mana operasi file dapat diubah tanpa memengaruhi kernel atau struktur disk yang sebenarnya.
 
 Selanjutnya, program ini juga dilengkapi dengan sistem pencatatan aktivitas ke dalam `log.txt`. Setiap file yang ditampilkan pertama kali, disembunyikan, atau dihapus akan dicatat dengan timestamp, jenis objek (file/folder), serta status (visible/hidden/deleted). Implementasi ini mencerminkan rekomendasi dari Baliga et al. dalam membangun sistem file berbasis lapisan pengguna dengan fitur audit log untuk keperluan forensik ayau keamanan cyber. 
+
  
-> Insert poin soal...
-
-**Teori**
-
-...
-
-**Solusi**
-
-...
-
-**Video Menjalankan Program**
-
-
+**Video Menjalankan Program**    
 [Akses Video dalam Assets](./assets/demo%20fp-sisop.mp4)
 
 https://github.com/user-attachments/assets/0bc73f31-aa55-481e-9d87-510fa73b0cf5
