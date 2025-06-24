@@ -104,7 +104,7 @@ Struktur repository:
 **Video Menjalankan Program**
 
 
-[Akses Video dalam Assets](./assets/demo fp-sisop.mp4)
+[Akses Video dalam Assets](./assets/demo%20fp-sisop.mp4)
 
 https://github.com/user-attachments/assets/0bc73f31-aa55-481e-9d87-510fa73b0cf5
 
