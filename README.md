@@ -89,11 +89,12 @@ Menyaring entri direktori agar tidak menampilkan file tersembunyi secara visual,
 **Solusi**    
 Solusi praktikum ini mengimplementasikan sebuah program bernama `cleanfs.c`, yang memanfaatkan FUSE untuk membuat filesystem sederhana yang berfungsi menyembunyikan semua file atau folder yang diawali dengan titik (.) dari tampilan direktori mount. Program ini disusun menggunakan bahasa C, sesuai dengan rekomendasi dari Rajgarhia dan Gehani bahwa FUSE menyediakan binding kuat untuk C, serta memungkinkan kontrol penuh atas operasi dasar seperti `readdir`, `getattr`, `read`, dan `open`.
 
-Secara arsitektur, program berkerja dengan mengambil isi dari direktori `repo` sebagai sumber datanya. Direktori `mount_dir` adalh titik mounting tempat pengguna melihat tampilan file. fungsi `x_readdir` adalah komponen utama yang menyaring file yang dimulai dengan titik, sehingga tidak ditampilkan meskipun secara fisik tetap ada di disk. Fitur ini selaras dengan prinsip "user-level file filtering" yang disarankan oleh FiSt (Zadok dan Nieh), di mana operasi file dapat diubah tanpa memengaruhi kernel atau struktur disk yang sebenarnya.
+Secara arsitektur, program berkerja dengan mengambil isi dari direktori `repo` sebagai sumber datanya. Direktori `mount_dir` adalh titik mounting tempat pengguna melihat tampilan file. fungsi `x_readdir` adalah komponen utama yang menyaring file yang dimulai dengan titik, sehingga tidak ditampilkan meskipun secara fisik tetap ada di disk. Fitur ini selaras dengan prinsip "user-level file filtering" yang disarankan oleh FiST (Zadok dan Nieh), di mana operasi file dapat diubah tanpa memengaruhi kernel atau struktur disk yang sebenarnya.
 
-Selanjutnya, program ini juga dilengkapi dengan sistem pencatatan aktivitas ke dalam `log.txt`. Setiap file yang ditampilkan pertama kali, disembunyikan, atau dihapus akan dicatat dengan timestamp, jenis objek (file/folder), serta status (visible/hidden/deleted). Implementasi ini mencerminkan rekomendasi dari Baliga et al. dalam membangun sistem file berbasis lapisan pengguna dengan fitur audit log untuk keperluan forensik ayau keamanan cyber. 
+Selanjutnya, program ini juga dilengkapi dengan sistem pencatatan aktivitas ke dalam `log.txt`. Setiap file yang ditampilkan pertama kali, disembunyikan, atau dihapus akan dicatat dengan timestamp, jenis objek (file/folder), serta status (visible/hidden/deleted). Implementasi ini mencerminkan rekomendasi dari Baliga et al. dalam membangun sistem file berbasis lapisan pengguna dengan fitur audit log untuk keperluan forensik atau keamanan cyber. 
 
- 
+Adapun struktur direktori dna otutput setelah mounting akan menunjukkan bahwa `mount_dir` hanya menampilkan file non-dot(`file.txt, folder/`) sedangkan .hidden_file.txt atau `.hiden_folder/` tetap ada dalam repo namun tidak ditampilkan. Ini adalah bentuk *obfuscation* atau *view sanitization* yang banyak digunkakan dalam sistem yang menargetkan dalam privasi pengguna.
+
 **Video Menjalankan Program**    
 [Akses Video dalam Assets](./assets/demo%20fp-sisop.mp4)
 
