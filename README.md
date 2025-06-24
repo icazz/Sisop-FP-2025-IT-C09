@@ -106,7 +106,7 @@ Struktur repository:
 
 [Akses Video dalam Assets](./assets/demo fp-sisop.mp4)
 
-https://github.com/user-attachments/assets/12a90850-17e7-4e6a-bb9c-6bbb71df03c8
+https://github.com/user-attachments/assets/0bc73f31-aa55-481e-9d87-510fa73b0cf5
 
 ## Daftar Pustaka
 
