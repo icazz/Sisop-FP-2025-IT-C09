@@ -84,7 +84,7 @@ Pengembangan sistem file di user-space menawarkan pendekatan yang lebih fleksibe
 FUSE (Filesystem in Userspace) merupakan antarmuka yang memungkinkan pembuatan filesystem tanpa hak akses superuser dan tanpa perlu menyentuh kode kernel. Dalam studi mereka, Rajgarhia dan Gehani menunjukkan bahwa FUSE telah menjadi populer karena menawarkan API sederhana dan dapat digunakan oleh pemrogram C maupun bahasa tingkat tinggi lainnya, tanpa perlu reboot atau patch kernel. Dalam kaitannya dengan penyembunyian file, teknik menyembunyikan file yang dinamai dengan awalan titik (.) adalah konvensi sistem Unix yang umum. Namun demikian, seperti dijelaskan dalam makalah oleh Jokay dan Kosdy (2013), penyembunyian di sistem file dapat lebih maju, termasuk teknik steganografi atau manipulasi metadata. Penelitian-penelitian lain juga membahas pendekatan seperti DupeFile untuk menyembunyikan file menggunakan nama yang mirip atau berulang, sebagai bentuk information hiding dalam sistem file.
 
 Namun berbeda dengan pendekatan kompleks tersebut, tugas ini mengambil jalan yang sederhana namun efektif:    
-Menyaring entri direktori agar tidak menampilkan file tersembunyi secara visual, dengan tetap menyimpan struktur dan isinya di belakang layar. Pendekatan ini serupa dengan desain awal `CovertFS` (Baliga et al.), yang juga mengimplementasikan sistem file tersembunyi melalui lapisan logika di atas FUSE.
+Menyaring entri direktori agar tidak menampilkan file tersembunyi secara visual, dengan tetap menyimpan struktur dan isinya di belakang layar. Pendekatan ini serupa dengan desain awal `ConvertFS` (Baliga et al.), yang juga mengimplementasikan sistem file tersembunyi melalui lapisan logika di atas FUSE.
 
 **Solusi**    
 Solusi praktikum ini mengimplementasikan sebuah program bernama `cleanfs.c`, yang memanfaatkan FUSE untuk membuat filesystem sederhana yang berfungsi menyembunyikan semua file atau folder yang diawali dengan titik (.) dari tampilan direktori mount. Program ini disusun menggunakan bahasa C, sesuai dengan rekomendasi dari Rajgarhia dan Gehani bahwa FUSE menyediakan binding kuat untuk C, serta memungkinkan kontrol penuh atas operasi dasar seperti `readdir`, `getattr`, `read`, dan `open`.
@@ -93,7 +93,11 @@ Secara arsitektur, program berkerja dengan mengambil isi dari direktori `repo` s
 
 Selanjutnya, program ini juga dilengkapi dengan sistem pencatatan aktivitas ke dalam `log.txt`. Setiap file yang ditampilkan pertama kali, disembunyikan, atau dihapus akan dicatat dengan timestamp, jenis objek (file/folder), serta status (visible/hidden/deleted). Implementasi ini mencerminkan rekomendasi dari Baliga et al. dalam membangun sistem file berbasis lapisan pengguna dengan fitur audit log untuk keperluan forensik atau keamanan cyber. 
 
-Adapun struktur direktori dna otutput setelah mounting akan menunjukkan bahwa `mount_dir` hanya menampilkan file non-dot(`file.txt, folder/`) sedangkan .hidden_file.txt atau `.hiden_folder/` tetap ada dalam repo namun tidak ditampilkan. Ini adalah bentuk *obfuscation* atau *view sanitization* yang banyak digunkakan dalam sistem yang menargetkan dalam privasi pengguna.
+Adapun struktur direktori dna otutput setelah mounting akan menunjukkan bahwa `mount_dir` hanya menampilkan file non-dot(`file.txt, folder/`) sedangkan `.hidden_file.txt` atau `.hiden_folder/` tetap ada dalam repo namun tidak ditampilkan. Ini adalah bentuk *obfuscation* atau *view sanitization* yang banyak digunkakan dalam sistem yang menargetkan dalam privasi pengguna.
+
+Proses pencatatan `delete` dilakukan dengan membnadingkan isi direktori pada iterasi sebelumnya dan iterasi saat ini, kemudian mencatat file yang sudah tidak ada lagi di `repo`. Ini merupakan bentuk *state tracking* sederhana yang mirip dengan yang digunakan dalam sistem distributed versioned file system seperti Ceph atau TierStore, walaupun dalam konteks yang jauh lebih ringan.
+
+Secara keseluruhan, solusi ini menggabungkan konsep teori FUSE modern, teknik *hiding based name*, serta logika pengawasan file dalam satu kesatuan program C yang efisien dan mudah diuji.
 
 **Video Menjalankan Program**    
 [Akses Video dalam Assets](./assets/demo%20fp-sisop.mp4)
