@@ -122,3 +122,5 @@ Srinivasan, A., Kolli, S., & Wu, J. (2013). Steganographic information hiding th
 and Networks, 8(2), 82–93.
 
 Jokay, M., & Kosdy, M. (2013). Steganographic file system based on JPEG files. Tatra Mountains Mathematical Publications, 57, 65–83.
+
+Baliga, A., Kilian, J., & Iftode, L. (2007). A Web-based covert file system (Technical Report). Rutgers University, Department of Computer Science.
