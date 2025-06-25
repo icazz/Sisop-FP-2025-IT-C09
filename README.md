@@ -81,12 +81,12 @@ mkdir .hidden_folder
 **Teori**    
 Pengembangan file sistem di user-space menawarkan pendekatan yang lebih fleksibel dan aman dibanding pengembangan langsung di kernel. Menurut Aditya Rajgarhia dan Ashish Gehani, pengembangan filesystem di ruang pengguna, terutama dengan framework FUSE, memungkinkan programmer menghindari kompleksitas pemrograman kernel seperti pointer raw, race condition, serta debugging yang sulit.
 
-FUSE (Filesystem in Userspace) merupakan antarmuka yang memungkinkan pembuatan filesystem tanpa hak akses superuser dan tanpa perlu menyentuh kode kernel. Dalam studi mereka, Rajgarhia dan Gehani menunjukkan bahwa FUSE telah menjadi populer karena menawarkan API sederhana dan dapat digunakan oleh pemrogram C maupun bahasa tingkat tinggi lainnya, tanpa perlu reboot atau patch kernel. Dalam kaitannya dengan penyembunyian file, teknik menyembunyikan file yang dinamai dengan awalan titik (.) adalah konvensi sistem Unix yang umum. Namun demikian, seperti dijelaskan dalam makalah oleh Jokay dan Kosdy (2013), penyembunyian di sistem file dapat lebih maju, termasuk teknik steganografi atau manipulasi metadata. Penelitian-penelitian lain juga membahas pendekatan seperti DupeFile untuk menyembunyikan file menggunakan nama yang mirip atau berulang, sebagai bentuk information hiding dalam sistem file.
+FUSE (Filesystem in Userspace) merupakan antarmuka yang memungkinkan pembuatan filesystem tanpa hak akses superuser dan tanpa perlu menyentuh kode kernel. Dalam studi mereka, Rajgarhia dan Gehani menunjukkan bahwa FUSE telah menjadi populer karena menawarkan API sederhana dan dapat digunakan oleh pemrogram C maupun bahasa tingkat tinggi lainnya, tanpa perlu reboot atau patch kernel. Dalam kaitannya dengan penyembunyian file, teknik menyembunyikan file yang dinamai dengan awalan titik (.) adalah konvensi sistem Unix yang umum. Namun demikian, seperti dijelaskan dalam makalah oleh Jokay dan Kosdy (2013), penyembunyian di sistem file dapat lebih maju, termasuk teknik steganografi atau manipulasi metadata. Penelitian-penelitian lain juga membahas pendekatan seperti DupeFile untuk menyembunyikan file menggunakan nama yang mirip atau berulang sebagai bentuk information hiding dalam sistem file.
 
 Namun berbeda dengan pendekatan kompleks tersebut, tugas ini mengambil jalan yang sederhana namun efektif:    
 Menyaring entri direktori agar tidak menampilkan file tersembunyi secara visual, dengan tetap menyimpan struktur dan isinya di belakang layar. Pendekatan ini serupa dengan desain awal `ConvertFS` (Baliga et al.), yang juga mengimplementasikan sistem file tersembunyi melalui lapisan logika di atas FUSE.
 
-**Solusi**    
+***Solusi***    
 Solusi praktikum ini mengimplementasikan sebuah program bernama `cleanfs.c`, yang memanfaatkan FUSE untuk membuat filesystem sederhana yang berfungsi menyembunyikan semua file atau folder yang diawali dengan titik (.) dari tampilan direktori mount. Program ini disusun menggunakan bahasa C, sesuai dengan rekomendasi dari Rajgarhia dan Gehani bahwa FUSE menyediakan binding kuat untuk C, serta memungkinkan kontrol penuh atas operasi dasar seperti `readdir`, `getattr`, `read`, dan `open`.
 
 Secara arsitektur, program berkerja dengan mengambil isi dari direktori `repo` sebagai sumber datanya. Direktori `mount_dir` adalh titik mounting tempat pengguna melihat tampilan file. fungsi `x_readdir` adalah komponen utama yang menyaring file yang dimulai dengan titik, sehingga tidak ditampilkan meskipun secara fisik tetap ada di disk. Fitur ini selaras dengan prinsip "user-level file filtering" yang disarankan oleh FiST (Zadok dan Nieh), di mana operasi file dapat diubah tanpa memengaruhi kernel atau struktur disk yang sebenarnya.
@@ -104,7 +104,7 @@ Secara keseluruhan, solusi ini menggabungkan konsep teori FUSE modern, teknik *h
 
 https://github.com/user-attachments/assets/0bc73f31-aa55-481e-9d87-510fa73b0cf5
 
-## Daftar Pustaka
+### Daftar Pustaka
 Rajgarhia, A., & Gehani, A. (2010). Performance and extension of user space file systems. In Proceedings of the 2010 ACM Symposium on Applied Computing (pp. 
 206–213). ACM.
 
